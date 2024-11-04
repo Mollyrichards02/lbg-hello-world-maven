@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     echo "Building the project on branch: ${env.BRANCH_NAME}"
-                    sh './mvnw clean install'
+                    sh 'mvn clean install'
                 }
             }
         }
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     echo "Running tests on branch: ${env.BRANCH_NAME}"
-                    sh './mvnw test'
+                    sh 'mvn test'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     echo "Running the application on branch: ${env.BRANCH_NAME}"
-                    sh './mvnw spring-boot:run &'
+                    sh 'mvn spring-boot:run &'
                     sleep 10  // Wait for the application to start
                 }
             }
